@@ -1,6 +1,7 @@
 # 第七章 暴力求解法
 
 ## 7.3 自己生成
+
 ### 7.3.1 增量构造法
 
 ```cpp
@@ -40,13 +41,18 @@ void print_subset(int cur){
 
 ### 7.3.3 二进制法
 
-     集合与二进制数的一一对应关系
-* A&B A|B A^B 分别对应集合的交、并、对称差。
-```cpp
-void print_subset(int n,int s){
+```text
+ 集合与二进制数的一一对应关系
+```
+
+* A&B A\|B A^B 分别对应集合的交、并、对称差。
+
+  ```cpp
+  void print_subset(int n,int s){
     _for(i,0,n)
         if(s&1<<i)printf("%d ",i);
     printf("\n");
-}
-_for(i,0,1<<n)print_subset(n,i);
-```
+  }
+  _for(i,0,1<<n)print_subset(n,i);
+  ```
+

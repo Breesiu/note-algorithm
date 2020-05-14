@@ -1,16 +1,17 @@
+# 贪心算法
 
+## 贪心算法总结
 
-# 贪心算法总结
-0. 贪心概述
-1. 区间不相交问题
-2. 哈夫曼编码树
-3. 洛谷合并果子问题
+1. 贪心概述
+2. 区间不相交问题
+3. 哈夫曼编码树
+4. 洛谷合并果子问题
 
-# 贪心概述
+## 贪心概述
 
 贪心的想法是通过局部最优解来推导全局最优解
 
-# 区间不相交问题
+## 区间不相交问题
 
 给定N个开区间，从中选择尽可能多的开区间，使得这些开区间两两没有交集
 
@@ -24,29 +25,29 @@
 //注意这里排序的定义，首先选择的是左端点最大元素，左端点元素相同的，选择右端点小的元素
 //或者首先选择右端点最小的元素，右端点相同时，选择左端点最大的元素
 static bool cmp(Interval& a,Interval& b){
-	if(a.start!=b.start)return a.start>b.start;
-	else return a.end<b.end;
+    if(a.start!=b.start)return a.start>b.start;
+    else return a.end<b.end;
 }
 int eraseOverlapIntervals(vector<Interval>& intervals) {
-	int right=0x7fffffff;
-	int sum=0;
-	sort(intervals.begin(),intervals.end(),cmp);
-	for(int i=0;i<intervals.size();i++){
-		if(intervals[i].end<=right){
-			sum++;right=intervals[i].start;
-		}
-	}
-	return intervals.size()-sum;
+    int right=0x7fffffff;
+    int sum=0;
+    sort(intervals.begin(),intervals.end(),cmp);
+    for(int i=0;i<intervals.size();i++){
+        if(intervals[i].end<=right){
+            sum++;right=intervals[i].start;
+        }
+    }
+    return intervals.size()-sum;
 }
 ```
 
-# 哈夫曼编码树
+## 哈夫曼编码树
 
 1. 规则：
-	1. 规定哈弗曼树的左子树编码为0，右子树编码为1；
-	2. 若两个字符权值相同，则ASCII码值小的字符为左孩子，大的为右孩子；
-	3. 创建的新节点所代表的字符与它的左孩子的字符相同；
-	4. 所有字符为ASCII码表上32-96之间的字符（即“ ”到“`”之间的字符）
+   1. 规定哈弗曼树的左子树编码为0，右子树编码为1；
+   2. 若两个字符权值相同，则ASCII码值小的字符为左孩子，大的为右孩子；
+   3. 创建的新节点所代表的字符与它的左孩子的字符相同；
+   4. 所有字符为ASCII码表上32-96之间的字符（即“ ”到“\`”之间的字符）
 
 ```cpp
  /*本题看似简单，实现哈夫曼编码书即可，但是还是折腾近三个小时，需要注意以下三点：
@@ -118,7 +119,7 @@ int eraseOverlapIntervals(vector<Interval>& intervals) {
  }
 ```
 
-# 洛谷合并果子
+## 洛谷合并果子
 
 在一个果园里，多多已经将所有的果子打了下来，而且按果子的不同种类分成了不同的堆。多多决定把所有的果子合成一堆。
 
@@ -127,3 +128,4 @@ int eraseOverlapIntervals(vector<Interval>& intervals) {
 因为还要花大力气把这些果子搬回家，所以多多在合并果子时要尽可能地节省体力。假定每个果子重量都为 11，并且已知果子的种类 数和每种果子的数目，你的任务是设计出合并的次序方案，使多多耗费的体力最少，并输出这个最小的体力耗费值。
 
 此题类似哈夫曼编码树，贪心求解，每次合并重量最小的两堆。（与合并果子问题区别的是合并石子问题，只能合并相邻的两堆，局部最优解并不是全局最优解，贪心失效，是DP问题）
+

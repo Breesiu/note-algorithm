@@ -24,7 +24,7 @@ void Mirror(TreeNode* pRoot) {
 
 书上写的不是很好，类似迷宫问题需要设置方向矩阵。
 
-防止审题不细致，比如人家可没说矩阵是n*n，实际上是n*m的。
+防止审题不细致，比如人家可没说矩阵是n_n，实际上是n_m的。
 
 ```cpp
 int n,m;
@@ -176,12 +176,12 @@ RandomListNode* Clone(RandomListNode* p){
 ```cpp
 /*
 struct TreeNode {
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-	TreeNode(int x) :
-			val(x), left(NULL), right(NULL) {
-	}
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+    TreeNode(int x) :
+            val(x), left(NULL), right(NULL) {
+    }
 };*/
 TreeNode* last;
 void inTrav(TreeNode* p){
@@ -195,13 +195,14 @@ void inTrav(TreeNode* p){
     inTrav(p->right);
 }
 TreeNode* Convert(TreeNode* p){
-	if(!p)return p;
+    if(!p)return p;
     last=NULL;
     TreeNode* ans=p;while(ans->left)ans=ans->left;
     inTrav(p);
     return ans;
 }
 ```
+
 ## 28.字符串的排列 p154
 
 输入一个字符串，打印出该字符串的所有排列。
@@ -267,3 +268,4 @@ vector<string> Permutation(string str) {
     return ans;
 }
 ```
+

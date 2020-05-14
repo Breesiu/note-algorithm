@@ -9,15 +9,16 @@
 鲁棒性：要考虑输入的边界条件等如何处理，比如指数是负数和0的情况。以及底数为0的情况等等，要让面试官明白，这些边界情况和违法输入自己都考虑到了
 
 基础知识：判断底数是否为0时不能用==，因为浮点数误差，应该写函数判断其差在1e-8以内或其他。
+
 ```cpp
 double Power(double base, int exponent) {
     if(exponent==0)return 1;
     if(exponent==1)return base;
     if(exponent<0){
-		double f=Power(base,-exponent);
-		f=1/f;
-		return f;
-	}
+        double f=Power(base,-exponent);
+        f=1/f;
+        return f;
+    }
     if(exponent&1){
         double f=Power(base,exponent/2);
         return base*f*f;
@@ -36,11 +37,11 @@ double Power(double base, int exponent) {
 
 所以，这个题目就转化成了dfs全排列
 
-## 13.在O(1)时间内删除链表节点 p99
+## 13.在O\(1\)时间内删除链表节点 p99
 
 `void deleteNode(ListNode* head,ListNode* p)`
 
-从头遍历的复杂度显然是O(n)，所以需要转变思路：是否一定要删除节点呢？可以把下一个节点的值赋值到这个节点，然后删除下一个节点即可。
+从头遍历的复杂度显然是O\(n\)，所以需要转变思路：是否一定要删除节点呢？可以把下一个节点的值赋值到这个节点，然后删除下一个节点即可。
 
 鲁棒性：该节点是尾节点，或者只有一个节点。
 
@@ -71,6 +72,7 @@ double Power(double base, int exponent) {
 考察对二叉树遍历的运用和递归算法。
 
 思路：第一步在树A中查找和树B根节点值一样的节点，第二步判断以该点为根是否和B相同。
+
 ```cpp
 bool flag;
 void postTrav(TreeNode* p1,TreeNode* p2){
@@ -94,3 +96,4 @@ bool HasSubtree(TreeNode* p1, TreeNode* p2){
     return flag;
 }
 ```
+

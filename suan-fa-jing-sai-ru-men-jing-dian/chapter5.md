@@ -1,10 +1,14 @@
 # 第五章 C++与STL入门
+
 从这一章开始，例题都要自己做下，OJ要AC
-* C++中声明数组时，可以用const声明的常数，C++中这种写法更推荐，而不用#define声明常数
+
+* C++中声明数组时，可以用const声明的常数，C++中这种写法更推荐，而不用\#define声明常数
 * 引用是别名，虽然功能上比指针弱，但是减少了出错的可能，提高了代码可读性。
-* lower_bound返回大于或等于e的最小数，upper_bound
+* lower\_bound返回大于或等于e的最小数，upper\_bound
 * 测试时常用assert
 * 大整数类、高精度算法
-```cpp
-class Bign
-```
+
+  ```cpp
+  class Bign
+  ```
+
