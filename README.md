@@ -15,7 +15,7 @@
 
 ## 算法笔记
 
-* [README](suan-fa-bi-ji/suan-fa-bi-ji.md)
+* [全书目录&PAT](suan-fa-bi-ji/suan-fa-bi-ji.md)
 * [全书笔记](suan-fa-bi-ji/chapter-base.md)
 
 ## 剑指offer
