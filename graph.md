@@ -377,6 +377,30 @@ while(lo<hi){
 }
 ```
 
+也可以用dfs实现拓扑排序，记录节点的状态为【undiscovered，discovered，visited】。
+`在dfs的过程中注意状态的转变即可。`
+
+```cpp
+stack<int> s; // 栈一个个取出即为拓扑排序
+vector<int> status(numCourses,0); // 表示节点状态，0未发现，1发现，2访问
+vector<vector<int> > grid; // 图邻接表
+bool dfs(int i,vector<int>& status,vector<vector<int> >& grid){
+    printf("%d\n",i);
+    for(int j=0;j<grid[i].size();j++){
+        int next = grid[i][j];
+        if(status[next]==1)return false;
+        if(status[next]==0){
+            status[next]=1;
+            bool success = dfs(next,status,grid);
+            if(!success)return false;
+        }
+    }
+    s.push(i);
+    status[i] = 2;
+    return true;
+}
+```
+
 ## 6 关键路径
 
 ### AOE网关键路径，即有向无环图DAG最长路径
