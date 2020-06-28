@@ -527,7 +527,7 @@ void BCC(int v,int& clock,stack<int>& S){
                 status(v,u)=BACKWARD;
                 if(u!=parent(v))hca(v)=min(hca(v),dTime(u));//更新hca[v]越小越好
                 break;
-            default:
+            default: // 无向图不存在这种情况，有向图才存在
                 status(v,u)=(dTime(v)<dTime(u))?FORWARD:CROSS;
                 break;
         }
