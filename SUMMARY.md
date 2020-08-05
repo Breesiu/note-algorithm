@@ -1,6 +1,7 @@
 # Table of contents
 
 * [README](README.md)
+* [算法导论中的伪代码](pseudocode.md)
 * [动态规划](dp.md)
 * [贪心算法](greed.md)
 * [图算法](graph.md)
