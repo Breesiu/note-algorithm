@@ -36,3 +36,6 @@
 * [第1-2章 蓄势待发准备篇+初出毛庐初级篇](tiao-zhan-cheng-xu-she-ji-jing-sai/chapter1-and-2.md)
 * [第三章：出类拔萃-中级篇](tiao-zhan-cheng-xu-she-ji-jing-sai/chapter3.md)
 
+## kick start
+
+* [kick start 2021](kickstart/2021.md)
