@@ -666,3 +666,34 @@ bool same(int x,int y){
 }
 ```
 
+```cpp
+class DisjointSet{
+    private:
+        vector<int> fa;
+        int _find(int x){
+            if(fa[x]==x)return x;
+            else{
+                int t = fa[x];
+                fa[x] = _find(t);
+                return fa[x];
+            }
+        };
+    public:
+        DisjointSet(int size){
+            for(int i=0;i<size;i++)fa.push_back(i);
+        };
+        int _union(int a, int b){
+            int fa_a = _find(a);
+            int fa_b = _find(b);
+            fa[fa_a] = fa_b;
+            return fa_b;
+        };
+        bool same(int a,int b){
+            return _find(a) == _find(b);
+        };
+        bool root(int a){
+            return fa[a] == a;
+        }
+};
+```
+
