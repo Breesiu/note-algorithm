@@ -21,7 +21,7 @@ int main(){
         stock.push_back(t);
     }
     double lo=0.001,hi=stock[0];
-    while(hi-lo>0.001){
+    while(hi-lo>0.0001){
         double mi = (lo+hi)/2;
         if(valid(mi)){
             lo = mi;
