@@ -1,5 +1,5 @@
 test*
-*.out
+**.out
 *in.txt
 *out.txt
 *test.txt

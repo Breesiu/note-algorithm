@@ -1,5 +1,9 @@
 # 剑指offer
 
+考察重点：
+* 边界情况
+* 递归和迭代、子问题的定义和求解
+
 # 二.面试需要的基础知识
 
 ## 3.二维数组中的查找 p38
@@ -56,7 +60,7 @@ void replaceSpace(char *str,int length) {
 
 ## 7.用两个栈实现队列 p59
 
-push算法直接插入到stack1即可，不用将stack2倒过来，pop直接删除stack2顶部即可，stack2为空是从stack1调入元素。自己之前实现的倒来倒去是没必要的。
+push算法直接插入到stack1即可，不用将stack2倒过来，pop直接删除stack2顶部即可，stack2为空是从stack1调入元素。
 
 ```cpp
 class Solution{
@@ -85,7 +89,7 @@ private:
 
 输入一个递增数组的一个旋转，输出该数组中的最小值。
 
-二分，判断中间元素是位于前一段递增数组还是后一段递增数组。本题难点在于特殊情况的讨论，即中间元素和前后元素相等的情况。比如{1 0 1 1 1}{1 1 1 0 1}这两种情况。
+二分，判断中间元素是位于前一段递增数组还是后一段递增数组。本题难点在于特殊情况的讨论，即中间元素和前后元素相等的情况。比如{1 0 1 1 1}{1 1 1 0 1}这两种情况，这种情况存在，必然意味着前半部分或者后半部分的数字全部都一样，所以，可以直接顺序查找最小值，当然，这种情况下极端复杂度是O(n).
 
 ```cpp
 class Solution {
@@ -94,34 +98,26 @@ public:
         int size = rotateArray.size();
         if(size == 0){
             return 0;
-        }//if
+        }
         int left = 0,right = size - 1;
         int mid = 0;
-        // rotateArray[left] >= rotateArray[right] 确保旋转
         while(rotateArray[left] >= rotateArray[right]){
-            // 分界点
             if(right - left == 1){
                 mid = right;
                 break;
-            }//if
+            }
             mid = left + (right - left) / 2;
-            // rotateArray[left] rotateArray[right] rotateArray[mid]三者相等
-            // 无法确定中间元素是属于前面还是后面的递增子数组
-            // 只能顺序查找
-            if(rotateArray[left] == rotateArray[right] && rotateArray[left] == rotateArray[mid]){
+            // 无法确定中间元素是属于前面还是后面的递增子数组,只能顺序查找
+            if(rotateArray[left] == rotateArray[right] && rotateArray[left] == rotateArray[mid]){ 
                 return MinOrder(rotateArray,left,right);
-            }//if
-            // 中间元素位于前面的递增子数组
-            // 此时最小元素位于中间元素的后面
+            }
             if(rotateArray[mid] >= rotateArray[left]){
                 left = mid;
-            }//if
-            // 中间元素位于后面的递增子数组
-            // 此时最小元素位于中间元素的前面
+            }
             else{
                 right = mid;
-            }//else
-        }//while
+            }
+        }
         return rotateArray[mid];
     }
 private:
@@ -131,8 +127,8 @@ private:
         for(int i = left + 1;i < right;++i){
             if(num[i] < result){
                 result = num[i];
-            }//if
-        }//for
+            }
+        }
         return result;
     }
 };
@@ -140,7 +136,9 @@ private:
 
 ## 9.斐波那契数列
 
-略
+斐波那契数列考察的点无非就是迭代和递归，以及递归方法如何将复杂度。
+
+其次，就是采用矩阵乘法和快速幂，在logn时间内求出第n项。
 
 ## 10.二进制中1的个数 p78
 
@@ -215,6 +213,8 @@ double Power(double base, int exponent) {
 ## 14.调整数组顺序使奇数位于偶数前面 p102
 
 初级方法：不需要额外空间，只需要维护两个指针，第一个指针初始化时指向数组的第一个数字，第二个指向最后一个数字，发现偶数在奇数前面，交换二者即可。
+
+这种方法的思路类似于快速排序中的partition操作。
 
 对于资深程序员，还要考虑可扩展性，比如题目改为负数放在正数前面等，把比较函数作为函数指针传入该方法，重定义排序规则时传入不同的比较函数即可，而主函数不需要任何改动。
 
@@ -345,7 +345,9 @@ vector<int> printMatrix(vector<vector<int> > matrix) {
 
 ## 22.栈混洗 p134
 
-熟悉的题目也不能掉以轻心
+判断给定的两个数组是不是栈混洗的结果，直接模拟即可。
+
+另外，如果给出一个数组，输出全部栈混洗的序列，这时候还是需要用栈和DFS来模拟。
 
 ```cpp
 bool IsPopOrder(vector<int> pushV,vector<int> popV) {
